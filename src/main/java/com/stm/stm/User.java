@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -23,6 +25,13 @@ public class User {
     private String password;
     private LocalDateTime registrationDateTime = LocalDateTime.now();
     private boolean status = false;
+    @OneToMany
+    @JoinTable(
+            name = "user_to_tasks",
+            joinColumns = @JoinColumn(name = "user_Id"),
+            inverseJoinColumns = @JoinColumn(name = "task_Id")
+    )
+    private Set<Task> tasks = new HashSet<>();
 
     public User(String name, String lastName, String email, String password) {
         this.name = name;
