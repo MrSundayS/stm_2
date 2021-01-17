@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class MainController {
@@ -31,5 +32,8 @@ public class MainController {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-
+    @GetMapping("users/findById")
+    public Optional<User> getUserByEmail(@RequestParam("userId") int userId){
+        return userService.getUserByUserId(userId);
+    }
 }
