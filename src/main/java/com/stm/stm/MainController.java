@@ -27,4 +27,9 @@ public class MainController {
         User user = new User(name, lastName, email, password);  // definition and init of User class object
         return userService.addUser(user);
     }
+    @GetMapping("/users")
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
+    }
+
 }
