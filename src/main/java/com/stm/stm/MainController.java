@@ -10,9 +10,11 @@ import java.util.Optional;
 @RestController
 public class MainController {
     private UserService userService;
+    private TaskService taskService;
     @Autowired
-    public MainController(UserService userService) {
+    public MainController(UserService userService, TaskService taskService) {
         this.userService = userService;
+        this.taskService = taskService;
     }
 
     @PostMapping("/users/register")
@@ -45,5 +47,9 @@ public class MainController {
     public boolean addTaskByUserId(@PathVariable("userId")int userId, @RequestParam("title")String title, @RequestParam("description")String description){
         Task newTask = new Task(title,description);
         return userService.createTaskByUser(userId,newTask);
+    }
+    @GetMapping("/tasks")
+    public List<Task> getAllTasks(){
+        return taskService.getAllTasks();
     }
 }

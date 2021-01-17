@@ -10,6 +10,7 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    private TaskService taskService;
 
     public User addUser(User user){
         return userRepository.save(user);
@@ -43,10 +44,10 @@ public class UserService {
         return result;
     }
     public boolean createTaskByUser(int userId, Task task){
-        if(userRepository.findById(userId).isPresent()) {
-            Optional<User> userTask = userRepository.findById(userId);
-            return userTask.get().addTask(task);
-        }
-        return false;
+
+        Optional<User> userTask = userRepository.findById(userId);
+        taskService.addTask(task);
+        return userTask.get().addTask(task);
+
     }
     }
