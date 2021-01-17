@@ -32,7 +32,7 @@ public class MainController {
         return userService.getAllUsers();
     }
     @GetMapping("/users/findById")
-    public Optional<User> getUserByEmail(@RequestParam("userId") int userId){
+    public Optional<User> getUserById(@RequestParam("userId") int userId){
         return userService.getUserByUserId(userId);
     }
     @PutMapping("/users/changeStatus")
@@ -51,5 +51,9 @@ public class MainController {
     @GetMapping("/tasks")
     public List<Task> getAllTasks(){
         return taskService.getAllTasks();
+    }
+    @GetMapping("/tasks/findById")
+    public Optional<Task> getTaskId(@RequestParam("taskId") int taskId){
+        return taskService.getTaskByUserId(taskId);
     }
 }
