@@ -60,4 +60,8 @@ public class MainController {
     public Task updateStatus(@RequestParam("taskId") int taskId, @RequestParam("newStatus") Task.status newStatus){
         return taskService.updateStatus(taskId,newStatus);
     }
+    @DeleteMapping("/tasks/delete/{taskId}")
+    public boolean deleteTaskById(@PathVariable("taskId")int taskId){
+        return taskService.deleteTaskById(taskId);
+    }
 }
