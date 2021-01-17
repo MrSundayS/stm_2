@@ -24,4 +24,22 @@ public class UserService {
             return null;
         }
     }
+    public User updateStatus(int userId, boolean newStatus){
+        User user =null;
+        Optional<User> userOptional = userRepository.findById(userId);
+        if(userOptional.isPresent()){
+            User userToUpdate= userOptional.get();
+            userToUpdate.setStatus(newStatus);
+            user = userRepository.save(userToUpdate);
+        }
+        return user;
+    }
+    public boolean deleteUserById(int userId){
+        boolean result = false;
+        if(userRepository.existsById(userId)) {
+            userRepository.deleteById(userId);
+            result = true;
+        }
+        return result;
+    }
     }

@@ -2,10 +2,7 @@ package com.stm.stm;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,5 +32,13 @@ public class MainController {
     @GetMapping("users/findById")
     public Optional<User> getUserByEmail(@RequestParam("userId") int userId){
         return userService.getUserByUserId(userId);
+    }
+    @PutMapping("/users/changeStatus")
+    public User updateStatus(@RequestParam("userId") int userId, @RequestParam("newStatus") Boolean newStatus){
+        return userService.updateStatus(userId,newStatus);
+    }
+    @DeleteMapping("/users/delete/{userId}")
+    public boolean deleteUserById(@PathVariable("userId")int userId){
+        return userService.deleteUserById(userId);
     }
 }
