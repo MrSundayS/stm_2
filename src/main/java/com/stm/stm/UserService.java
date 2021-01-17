@@ -42,4 +42,11 @@ public class UserService {
         }
         return result;
     }
+    public boolean createTaskByUser(int userId, Task task){
+        if(userRepository.findById(userId).isPresent()) {
+            Optional<User> userTask = userRepository.findById(userId);
+            return userTask.get().addTask(task);
+        }
+        return false;
+    }
     }

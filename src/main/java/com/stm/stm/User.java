@@ -41,4 +41,8 @@ public class User {
         this.registrationDateTime = registrationDateTime;
         this.status = status;
     }
+
+    public boolean addTask(Task newTask){
+        return tasks.add(newTask);
+    }
 }

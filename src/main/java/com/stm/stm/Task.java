@@ -25,6 +25,17 @@ public class Task {
     private LocalDateTime dateAdded=LocalDateTime.now();
     private enum type{TASK, BUG, FEATURE};
     private enum status{NEW,IN_PROGRESS,DONE};
+    private type taskType;
+    private status taskStatus;
 
+
+    public Task(String title, String description) {
+        this.taskId = taskId;
+        this.title = title;
+        this.description = description;
+        this.dateAdded = dateAdded;
+        taskType=type.TASK;
+        taskStatus=status.NEW;
+    }
 
 }

@@ -29,7 +29,7 @@ public class MainController {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-    @GetMapping("users/findById")
+    @GetMapping("/users/findById")
     public Optional<User> getUserByEmail(@RequestParam("userId") int userId){
         return userService.getUserByUserId(userId);
     }
@@ -40,5 +40,10 @@ public class MainController {
     @DeleteMapping("/users/delete/{userId}")
     public boolean deleteUserById(@PathVariable("userId")int userId){
         return userService.deleteUserById(userId);
+    }
+    @PostMapping("/users/tasks/add")
+    public boolean addTaskByUserId(@PathVariable("userId")int userId, @RequestParam("title")String title, @RequestParam("description")String description){
+        Task newTask = new Task(title,description);
+        return userService.createTaskByUser(userId,newTask);
     }
 }
