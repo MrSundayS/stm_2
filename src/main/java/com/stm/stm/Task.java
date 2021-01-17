@@ -23,8 +23,8 @@ public class Task {
     private String title;
     private String description;
     private LocalDateTime dateAdded=LocalDateTime.now();
-    private enum type{TASK, BUG, FEATURE};
-    private enum status{NEW,IN_PROGRESS,DONE};
+    public enum type{TASK, BUG, FEATURE};
+    public enum status{NEW,IN_PROGRESS,DONE};
     private type taskType;
     private status taskStatus;
 

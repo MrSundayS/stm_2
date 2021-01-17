@@ -56,4 +56,8 @@ public class MainController {
     public Optional<Task> getTaskId(@RequestParam("taskId") int taskId){
         return taskService.getTaskByUserId(taskId);
     }
+    @PutMapping("/tasks/changeStatus")
+    public Task updateStatus(@RequestParam("taskId") int taskId, @RequestParam("newStatus") Task.status newStatus){
+        return taskService.updateStatus(taskId,newStatus);
+    }
 }

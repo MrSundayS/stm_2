@@ -44,9 +44,8 @@ public class UserService {
         return result;
     }
     public boolean createTaskByUser(int userId, Task task){
-
-        Optional<User> userTask = userRepository.findById(userId);
         taskService.addTask(task);
+        Optional<User> userTask = userRepository.findById(userId);
         return userTask.get().addTask(task);
 
     }
